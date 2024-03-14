@@ -1,0 +1,33 @@
+{% extends "chatApp/base.html" %}
+
+{% block title %}Rooms | {% endblock %}
+{% block content %}
+    <form action="." method="post" autocomplete="off" autofocus class="room-form">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="roomname" required id="roomname" autofocus tabindex="1">
+                        <div class="underline"></div>
+                        <label for="">Room name</label>
+                    </div>
+                </div>
+
+                <div class="input-data">
+                    <div class="form-row submit-btn">
+                        <div class="input-data">
+                            <div class="inner"></div>
+                            <input type="submit" value="Create room" tabindex="3">
+                        </div>
+                    </div>
+                </div>
+            </form>
+    <div class="rooms-container">
+        {% for room in rooms %}
+            <div class="room-card">
+                <h2 class="mb-5 text-2xl font-semibold">{{ room.name }}</h2>
+                <a href="{% url "room" room.slug %}"
+                   class="px-5 py-3 block rounded-xl text-white bg-teal-600 hover:bg-teal-700">Join</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

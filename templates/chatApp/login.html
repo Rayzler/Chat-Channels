@@ -1,0 +1,50 @@
+{% extends "chatApp/base.html" %}
+
+{% block title %}Log in | {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="container-form">
+            <div class="text">Log in</div>
+
+            <form action="." method="post" autocomplete="off" autofocus>
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="text" name="username" required id="username" autofocus tabindex="1">
+                        <div class="underline"></div>
+                        <label for="">Username</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-data">
+                        <input type="password" name="password" required id="password" tabindex="2">
+                        <div class="underline"></div>
+                        <label for="">Password</label>
+                    </div>
+                </div>
+
+                <div class="error_message">
+                    {% if error_message %}
+                        <p><i>{{ error_message }}</i></p>
+                    {% endif %}
+                </div>
+
+                <div class="input-data">
+                    <div class="form-row submit-btn">
+                        <div class="input-data">
+                            <div class="inner"></div>
+                            <input type="submit" value="Log in" tabindex="3">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+
+    </script>
+
+{% endblock %}
